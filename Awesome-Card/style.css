@@ -1,0 +1,101 @@
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet');
+
+/* common style */
+*{
+    box-sizing: border-box; 
+}
+
+body{
+    font-family: 'Golos Sans', sans-serif;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+
+}
+
+.container{
+    /* make elements inside it(panel) horizontally */
+    display: flex;
+
+    /* flex-direction: column; make it align vertical */
+
+    /* viewport width */
+    width: 90vw;
+
+}
+
+.panel{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+
+    /* make it rounded */
+    border-radius: 50px;
+
+    /* color of inside text */
+    color: white;
+    cursor: pointer;
+
+    /* setup indivdual width */
+    flex: 0.5;
+
+    /* separate the panels */
+    margin: 10px;
+
+    /* relate position to the h3 */
+    position: relative;
+
+    /* transition needed for active panel */
+    transition: flex 0.7 ease-in;
+}
+
+.panel h3{
+    font-size: 24px;
+    position: absolute;
+
+    /* positioned the header */
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+
+    /* make it active only when show */
+    opacity: 0;
+}
+
+/* below is the styles when panel is active only */
+
+.panel.active{
+    flex: 5;
+}
+
+.panel.active h3{
+    opacity: 1;
+
+    /* add transition and delay */
+    transition: opacity 0.3s ease-in 0.4s;
+
+
+}
+
+/* display screen when user resize it
+    when screen size pass 480px display all panels,
+    if not, display only 3
+*/
+@media (max-width: 480px) {
+    /* to show only 3 panels when resize */
+    .container{
+        width: 100vh;
+    }
+
+    /* to remove another 2 panels with pseduo selector */
+    .panel:nth-of-type(4),.panel:nth-of-type(4){
+        display: none;
+    }
+
+}
